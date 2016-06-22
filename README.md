@@ -4,7 +4,7 @@ In this repository you will find a R script that generates a "date" table based 
 
 FYI, I am having trouble with the "Quarter Day" field. for some reason it returns seconds and not the day. I am investigating this problem. If you know how to correct it then please submit a pull request with the solution. Thanks!
 
-## Instructions on how to use a R script as a data source
+## Instructions on how to use a R script as a data source in Power BI
 1. Make sure you have R installed on your machine
 2. Open up your IDE of choice (I prefer R Studio)
 2. Create a R script that returns the data set that you want to import into Power BI as a data.frame
