@@ -17,7 +17,7 @@ Create.Date.Table <- function(start.date, end.date) {
     DateTable <- data.frame(Dates)
     
     DateTable <- DateTable %>%
-      # Uses the mutate dplyr verb and a few functions from the lubridate and base package to create date attribute fields for the "DateTables" data frame  
+      # Uses the mutate dplyr verb and a few functions from the lubridate and base package to create date attribute fields for the "DateTable" data frame  
       mutate("DateKey" = format(Dates, "%Y%m%d") # Uses the format function to format the date in YYYYMMDD format so that it can be used as a key
              ,"Month Name" = format(Dates, "%b") # Uses the format function to return the proper abbreviated month name for the given date.
              ,"Weekday Name" = wday(Dates, label = TRUE) # Uses the wday function to return the proper abbreviated weekday name for the given date. When you set the label property equal to "TRUE" it returns the name of the weekday. When it is set to false or not specified it return a key that represents the position in the week of the day.
@@ -48,12 +48,12 @@ Create.Date.Table <- function(start.date, end.date) {
     for (cal_year in cal_years) { 
       
       # Builds a url string based on the concatenation of the static part of the url and the cal_year
-      # passes that string to the read_html function of the rvest package.  Assigns the value of the read_html function to the url function.
       url <- paste("http://www.holidayscalendar.com/holidays/federal/?year=",cal_year,sep="")
       
       # Uses the rvest package to extract the federal holidays from the website for each year passed to it. It does so by returning the html of the site defined
       # by the url string by using the read_html function. It uses the html_nodes function to identify all of the nodes that contains the federal holidays and
-      # pass them back to us using the html_text() function in the form of a character vector.
+      # pass them back to us using the html_text() function in the form of a character vector. You can use the "SelectorGadget" tool to identify the nodes you
+      # want. You can find more about the "SelectorGadget" tool here: http://selectorgadget.com/.
       holiday_data <- 
         read_html(url) %>%
         html_nodes(".calendarevent") %>%
